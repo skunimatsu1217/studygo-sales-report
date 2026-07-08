@@ -170,6 +170,7 @@ tr:hover{background:#f8f9ff;}
   <div class="mode-tab active" onclick="switchMode('compare')">店舗比較</div>
   <div class="mode-tab" onclick="switchMode('ranking')">ランキング</div>
   <div class="mode-tab" onclick="switchMode('analysis')">属性分析</div>
+  <div class="mode-tab" onclick="switchMode('sns')">SNS・X運用</div>
 </div>
 
 <div class="main">
@@ -232,6 +233,98 @@ tr:hover{background:#f8f9ff;}
   <div id="analysisContent"></div>
 </div>
 
+<!-- ==================== SNS・X運用 ==================== -->
+<div class="panel" id="panel-sns">
+  <style>
+    #panel-sns .sns-wrap{max-width:1040px;margin:0 auto;}
+    #panel-sns .sns-note{font-size:12px;color:var(--g500);margin-bottom:16px;}
+    #panel-sns .sns-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px;}
+    #panel-sns .sns-kpi{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;text-align:center;}
+    #panel-sns .sns-kpi .v{font-size:26px;font-weight:800;color:var(--primary);}
+    #panel-sns .sns-kpi .l{font-size:12px;color:var(--g500);margin-top:4px;line-height:1.4;}
+    #panel-sns .sns-kpi.warn .v{color:var(--danger);}
+    #panel-sns .sns-punch{background:var(--primary-light);border-radius:var(--radius);padding:14px 18px;font-weight:700;color:var(--primary-dark);margin-bottom:20px;font-size:14px;}
+    #panel-sns .sns-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:16px;}
+    #panel-sns .sns-card h3{font-size:15px;color:var(--g800);margin:0 0 12px;border-left:4px solid var(--primary);padding-left:10px;}
+    #panel-sns .sns-table{width:100%;border-collapse:collapse;font-size:13px;}
+    #panel-sns .sns-table th{background:var(--g100);color:var(--g700);padding:8px;text-align:left;}
+    #panel-sns .sns-table td{padding:7px 8px;border-bottom:1px solid var(--g200);}
+    #panel-sns .sns-table td.num{text-align:right;}
+    #panel-sns .sns-tier{display:inline-block;min-width:22px;text-align:center;border-radius:5px;color:#fff;font-weight:800;font-size:12px;padding:1px 0;}
+    #panel-sns .tier-S{background:#16a34a;} #panel-sns .tier-A{background:#2563eb;}
+    #panel-sns .tier-B{background:#d97706;} #panel-sns .tier-C{background:#9ca3af;}
+    #panel-sns .sns-ul{margin:0;padding-left:20px;font-size:13px;line-height:1.9;color:var(--g700);}
+    #panel-sns .sns-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    @media(max-width:640px){#panel-sns .sns-cols{grid-template-columns:1fr;}}
+  </style>
+  <div class="sns-wrap">
+    <div class="sns-note">公式X 2026年6月 データ振り返り（公開表示ベースのサンプル抽出・全1,607件の網羅調査ではない）　作成: 2026-07-08</div>
+
+    <div class="sns-kpis">
+      <div class="sns-kpi"><div class="v">112</div><div class="l">フォロワー</div></div>
+      <div class="sns-kpi"><div class="v">80</div><div class="l">4〜6月 平均表示</div></div>
+      <div class="sns-kpi warn"><div class="v">18</div><div class="l">7月 平均表示（−78%）</div></div>
+      <div class="sns-kpi warn"><div class="v">≒0</div><div class="l">7月 いいね（11件で計1）</div></div>
+    </div>
+
+    <div class="sns-punch">📉 投稿頻度を上げた7月に表示が −78%。「量を増やすほど反応が下がる」逆相関が明確。</div>
+
+    <div class="sns-card">
+      <h3>ジャンル別 実績ランキング（中央値の表示回数で格付け）</h3>
+      <table class="sns-table">
+        <thead><tr><th>階層</th><th>ジャンル</th><th class="num">件数</th><th class="num">平均表示</th><th class="num">中央値</th><th class="num">最大</th><th class="num">平均いいね</th></tr></thead>
+        <tbody>
+          <tr><td><span class="sns-tier tier-S">S</span></td><td>文房具</td><td class="num">1</td><td class="num">749</td><td class="num">749</td><td class="num">749</td><td class="num">2</td></tr>
+          <tr><td><span class="sns-tier tier-S">S</span></td><td>ノート術</td><td class="num">1</td><td class="num">182</td><td class="num">182</td><td class="num">182</td><td class="num">3</td></tr>
+          <tr><td><span class="sns-tier tier-S">S</span></td><td>双方向（フォロワー返信）</td><td class="num">1</td><td class="num">165</td><td class="num">165</td><td class="num">165</td><td class="num">2</td></tr>
+          <tr><td><span class="sns-tier tier-S">S</span></td><td>実店舗レポ</td><td class="num">4</td><td class="num">128</td><td class="num">124.5</td><td class="num">169</td><td class="num">3.5</td></tr>
+          <tr><td><span class="sns-tier tier-A">A</span></td><td>アプリ紹介</td><td class="num">4</td><td class="num">68</td><td class="num">57.5</td><td class="num">122</td><td class="num">1.5</td></tr>
+          <tr><td><span class="sns-tier tier-A">A</span></td><td>資格ネタ</td><td class="num">1</td><td class="num">48</td><td class="num">48</td><td class="num">48</td><td class="num">2</td></tr>
+          <tr><td><span class="sns-tier tier-A">A</span></td><td>勉強場所</td><td class="num">1</td><td class="num">42</td><td class="num">42</td><td class="num">42</td><td class="num">2</td></tr>
+          <tr><td><span class="sns-tier tier-A">A</span></td><td>習慣・時間術</td><td class="num">6</td><td class="num">35</td><td class="num">39</td><td class="num">51</td><td class="num">2</td></tr>
+          <tr><td><span class="sns-tier tier-B">B</span></td><td>音楽紹介（曲/アイドル曲）</td><td class="num">23</td><td class="num">54</td><td class="num">46</td><td class="num">122</td><td class="num">1.9</td></tr>
+          <tr><td><span class="sns-tier tier-B">B</span></td><td>名言</td><td class="num">3</td><td class="num">31</td><td class="num">34</td><td class="num">36</td><td class="num">1.7</td></tr>
+          <tr><td><span class="sns-tier tier-B">B</span></td><td>社会人あるある</td><td class="num">4</td><td class="num">34</td><td class="num">29</td><td class="num">53</td><td class="num">2</td></tr>
+          <tr><td><span class="sns-tier tier-C">C</span></td><td>ご褒美お菓子</td><td class="num">1</td><td class="num">19</td><td class="num">19</td><td class="num">19</td><td class="num">0</td></tr>
+          <tr><td><span class="sns-tier tier-C">C</span></td><td>テンション系</td><td class="num">2</td><td class="num">15</td><td class="num">15</td><td class="num">18</td><td class="num">2</td></tr>
+          <tr><td><span class="sns-tier tier-C">C</span></td><td>有名人×勉強</td><td class="num">1</td><td class="num">14</td><td class="num">14</td><td class="num">14</td><td class="num">0</td></tr>
+          <tr><td><span class="sns-tier tier-C">C</span></td><td>雑学/研究</td><td class="num">1</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">0</td></tr>
+          <tr><td><span class="sns-tier tier-C">C</span></td><td>勉強の敵</td><td class="num">1</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sns-cols">
+      <div class="sns-card">
+        <h3>課題</h3>
+        <ul class="sns-ul">
+          <li><b>投稿過多</b>：フォロワー112人に対し7月1日6〜8件は過剰</li>
+          <li><b>テンプレ飽和</b>：音楽・名言・あるある偏重で新鮮味が低下</li>
+          <li><b>勝ちジャンル不足</b>：実店舗レポ/資格/文房具の比率が低い</li>
+        </ul>
+      </div>
+      <div class="sns-card">
+        <h3>読み取り</h3>
+        <ul class="sns-ul">
+          <li>伸びる＝具体的・実用的（実店舗・文房具・ノート・アプリ）</li>
+          <li>双方向（返信・参加型）が表示165と好調＝拡散の起点</li>
+          <li>音楽紹介は最多23件だが中央値46・7月は壊滅</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sns-card">
+      <h3>2026年下半期 方針</h3>
+      <ul class="sns-ul">
+        <li><b>頻度</b>：2件/日（同日に同一シリーズを重ねない）</li>
+        <li><b>時間</b>：平日 朝7:30・夜21:00 ／ 土日祝 午後14:00・夜20:00</li>
+        <li><b>配分（週14件）</b>：実店舗3・文房具/ノート3・資格2・参加型2・習慣/場所2・アプリ1・音楽/名言(抑制)1 ／ ご褒美・テンション・有名人・雑学・勉強の敵は除外</li>
+        <li><b>新規執筆</b>：約130本を勝ちジャンル中心に（音楽・名言は在庫消化＝新規ゼロ）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 </div><!-- /main -->
 
 <script>
@@ -257,7 +350,7 @@ function growthHtml(v){
 
 // ====== MODE SWITCH ======
 function switchMode(mode){
-  const modes=['compare','ranking','analysis'];
+  const modes=['compare','ranking','analysis','sns'];
   document.querySelectorAll('.mode-tab').forEach((t,i)=>t.classList.toggle('active',modes[i]===mode));
   modes.forEach(m=>document.getElementById('panel-'+m).classList.toggle('active',m===mode));
   if(mode==='ranking')renderRanking();
